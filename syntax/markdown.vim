@@ -142,4 +142,18 @@ if main_syntax ==# 'markdown'
   unlet main_syntax
 endif
 
+" fork: TODO-list stuff
+
+syn region itemTodo       start=" \[ ] " end="$"
+syn region itemInProgress start=" \[o] " end="$"
+syn region itemBlocked    start=" \[x] " end="$"
+syn region itemComplete   start=" \[+] " end="$"
+syn region itemWontDo     start=" \[-] " end="$"
+
+highlight def link itemTodo htmlTagName
+highlight def link itemInProgress Type
+highlight def link itemBlocked htmlH1
+highlight def link itemComplete Label
+highlight def link itemWontDo Delimiter
+
 " vim:set sw=2:
