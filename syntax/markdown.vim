@@ -55,8 +55,8 @@ syn match markdownBlockquote ">\%(\s\|$\)" contained nextgroup=@markdownBlock
 syn region markdownCodeBlock start="    \|\t" end="$" contained
 
 " TODO: real nesting
-syn match markdownListMarker "\%(\t\| \{0,4\}\)[-*+]\%(\s\+\S\)\@=" contained
-syn match markdownOrderedListMarker "\%(\t\| \{0,4}\)\<\d\+\.\%(\s\+\S\)\@=" contained
+syn match markdownListMarker "\%(\t\| \+\)[-*+]\%(\s\+\S\)\@=" contained
+syn match markdownOrderedListMarker "\%(\t\| \+\)\<\d\+\.\%(\s\+\S\)\@=" contained
 
 syn match markdownRule "\* *\* *\*[ *]*$" contained
 syn match markdownRule "- *- *-[ -]*$" contained
@@ -126,12 +126,12 @@ hi def link markdownIdDelimiter           markdownLinkDelimiter
 hi def link markdownUrlDelimiter          htmlTag
 hi def link markdownUrlTitleDelimiter     Delimiter
 
-hi def link markdownItalic                htmlItalic
-hi def link markdownItalicDelimiter       markdownItalic
-hi def link markdownBold                  htmlBold
-hi def link markdownBoldDelimiter         markdownBold
-hi def link markdownBoldItalic            htmlBoldItalic
-hi def link markdownBoldItalicDelimiter   markdownBoldItalic
+"hi def link markdownItalic                htmlItalic
+"hi def link markdownItalicDelimiter       markdownItalic
+"hi def link markdownBold                  htmlBold
+"hi def link markdownBoldDelimiter         markdownBold
+"hi def link markdownBoldItalic            htmlBoldItalic
+"hi def link markdownBoldItalicDelimiter   markdownBoldItalic
 hi def link markdownCodeDelimiter         Delimiter
 
 hi def link markdownEscape                Special
@@ -150,6 +150,7 @@ syn region itemBlocked    start=" \[x] "  end="$" keepend contains=itemCause
 syn region itemComplete   start=" \[+] "  end="$" keepend contains=itemCause
 syn region itemWontDo     start=" \[-] "  end="$" keepend contains=itemCause
 syn region itemCause      start=" > "     end="$"
+syn region itemShell      start=" \$ "    end="$"
 
 highlight def link itemTodo       htmlTagName
 highlight def link itemInProgress Type
@@ -157,5 +158,6 @@ highlight def link itemBlocked    htmlH1
 highlight def link itemCause      htmlLink
 highlight def link itemComplete   Label
 highlight def link itemWontDo     Delimiter
+highlight def link itemShell      String
 
 " vim:set sw=2:
